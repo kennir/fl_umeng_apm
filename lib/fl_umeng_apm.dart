@@ -4,14 +4,14 @@ import 'package:flutter/services.dart';
 
 export 'package:fl_umeng/fl_umeng.dart';
 
-const MethodChannel _channel = MethodChannel('UMeng.apm');
-
 class FlUMengAPM {
   factory FlUMengAPM() => _singleton ??= FlUMengAPM._();
 
   FlUMengAPM._();
 
   static FlUMengAPM? _singleton;
+
+  final MethodChannel _channel = const MethodChannel('UMeng.apm');
 
   /// 初始化
   Future<bool> init([CrashMode crashMode = const CrashMode()]) async {
