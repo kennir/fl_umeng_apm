@@ -32,9 +32,13 @@ class _HomePageState extends State<_HomePage> {
 
   /// 注册友盟性能检测
   Future<void> init() async {
+    debugPrint('注册友盟性能检测');
+    final bool value = await FlUMengAPM().init();
+
+    /// 初始化APM后再 初始化UMeng
     /// 注册友盟
     debugPrint('注册友盟');
-    final bool? data = await FlUMeng().init(
+    final bool data = await FlUMeng().init(
         preInit: true,
         androidAppKey: '5f8fe2abfac90f1c19a8642e',
         iosAppKey: '5f8fe4d4c1122b44acfc7aa7',
@@ -42,8 +46,6 @@ class _HomePageState extends State<_HomePage> {
     debugPrint('Umeng 初始化成功 = $data');
     await FlUMeng().setLogEnabled(true);
 
-    debugPrint('注册友盟性能检测');
-    final bool? value = await FlUMengAPM().init();
     debugPrint('Umeng apm 初始化成功 = $value');
   }
 

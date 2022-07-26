@@ -11,6 +11,8 @@
 Future<void> initState() async {
   /// 注册友盟性能监测
   final bool? data = await FlUMengAPM().init();
+
+  /// 初始化APM后再 初始化UMeng
   print('UMeng 初始化成功 = $data');
 }
 
