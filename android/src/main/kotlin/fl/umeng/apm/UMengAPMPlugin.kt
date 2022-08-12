@@ -21,32 +21,31 @@ class UMengAPMPlugin : FlutterPlugin, MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "init" -> {
-                val argument = call.arguments as Map<*, *>?
+                val argument = call.arguments as Map<*, *>
                 val bundle = Bundle()
-                if (argument != null) {
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_CRASH_JAVA, argument["enableJava"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_CRASH_NATIVE, argument["enableNative"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_CRASH_UNEXP, argument["enableUnExp"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_ANR, argument["enableAnr"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_PA, argument["enablePa"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_LAUNCH, argument["enableLaunch"] == true
-                    )
-                    bundle.putBoolean(
-                        UMCrash.KEY_ENABLE_MEM, argument["enableMEM"] == true
-                    )
-                    UMCrash.initConfig(bundle)
-                }
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_CRASH_JAVA, argument["enableJava"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_CRASH_NATIVE, argument["enableNative"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_CRASH_UNEXP, argument["enableUnExp"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_ANR, argument["enableAnr"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_PA, argument["enablePa"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_LAUNCH, argument["enableLaunch"] == true
+                )
+                bundle.putBoolean(
+                    UMCrash.KEY_ENABLE_MEM, argument["enableMEM"] == true
+                )
+                UMCrash.initConfig(bundle)
+                result.success(true)
             }
             "setAppVersion" -> {
                 UMCrash.setAppVersion(

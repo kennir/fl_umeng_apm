@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Fix a problem with init not returning
+
 ## 0.1.0
 
 * Upgrade gradle version
